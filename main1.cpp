@@ -19,7 +19,7 @@ int main() {
 	}
 	k++;
 	if(n!=k) {
-		cout<<"Error"<<endl;
+		cout<<"An error has occurred while reading input data"<<endl;
 	} else {
 		z=new int[n];
 		for(int i=0; i<n; i++)
