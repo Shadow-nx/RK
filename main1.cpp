@@ -2,7 +2,6 @@
 #include <string>
 #include <cstring>
 #include <limits>
-#include <cstdlib>
 
 using namespace std;
 
@@ -10,6 +9,7 @@ int main()
 {
 string count;	
 string str1;
+string *str2=nullptr;
 int k=0;
 cin>>count;
 cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -21,7 +21,7 @@ getline(cin,str1);
 	}
 	k++;
 if(atoi(count.c_str())==k){
-string str2[k];
+str2=new string[k];
 for(int i=0,j=0;i<str1.length();i++)
   if(str1[i]>='0' && str1[i]<='9')
    str2[j]=str2[j]+str1[i];
