@@ -1,19 +1,32 @@
 #include <iostream>
+#include <cstdlib>
 #include <iomanip>
 
 using namespace std;
 
 int main() {
-	int n;
-	int m;
-	cin>>n>>m;
+	string matrix_size;
+	getline(cin,matrix_size);
+	cin.clear();
+	int n=0;
+	int m=0;
+	n=atoi(matrix_size.c_str());
+	if(matrix_size.find(',')!=string::npos)
+		matrix_size.erase(0,matrix_size.find(',')+1);
+	if(matrix_size.find('.')!=string::npos)
+		matrix_size.erase(0,matrix_size.find('.')+1);
+	m=atoi(matrix_size.c_str());
+	if(n==0 || m==0) {
+		cout<<"An error has occurred while reading input data"<<endl;
+		return 1;
+	}
 	int **array=new int*[n];
 	for(int i=0; i<n; i++)
 		array[i]=new int[m];
 	for(int i=0; i<n; i++)
 		for(int j=0; j<m; j++)
 			array[i][j]=0;
-    int y=1;
+	int y=1;
 	int count;
 	int t=0;
 	int z=0;
@@ -41,10 +54,10 @@ int main() {
 			} else if(i>z && j==0+t) {
 				array[i--][j]=y++;
 				continue;
-			}else if(i==j && count==1){
+			} else if(i==j && count==1) {
 				array[i][j++]=y++;
 				continue;
-			}		    
+			}
 		}
 		t++;
 		z++;
@@ -54,7 +67,7 @@ int main() {
 
 	for(int i=0; i<n; i++) {
 		for(int j=0; j<m; j++)
-			cout<<setw(4)<<array[i][j];
+			cout<<setw(5)<<array[i][j];
 		cout<<endl;
 	}
 
